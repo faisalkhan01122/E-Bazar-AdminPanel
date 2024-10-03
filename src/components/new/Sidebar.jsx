@@ -206,20 +206,13 @@ const Sidebar = ({ setComponent }) => {
     <aside className="bg-primary text-white w-64 min-h-screen top-16  p-4 flex flex-col fixed left-0  h-full overflow-y-scroll">
       <div className="pb-3 lg:pt-4  ">
         <div className="flex items-center">
-         
           <input
             type="text"
-<<<<<<< HEAD
             className="ml-2 p-2 bg-primary border text-white border-white rounded-md focus:outline-none w-full placeholder-white"
-=======
-            className="ml-2 p-2 bg-primary  text-white border border-white rounded-md focus:outline-none w-full"
->>>>>>> d8ede99d8f6fa8198005cb844e5dfb2561aa35c3
             placeholder="Search menu..."
           />{" "}
         </div>
       </div>
-     
-      
 
       {/* Dashboard and POS buttons */}
       <Link
