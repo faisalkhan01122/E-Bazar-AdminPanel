@@ -203,19 +203,23 @@ const Sidebar = ({ setComponent }) => {
   return (
     // <aside className="bg-[#077422] text-white  min-h-screen p-4 flex flex-col fixed left-0  overflow-y-auto">
 
-    <aside className="bg-primary text-white w-64 min-h-screen p-4 flex flex-col fixed left-0  h-full overflow-y-scroll">
-      <div className="pb-3 pt-4 ">
+    <aside className="bg-primary text-white w-64 min-h-screen top-16  p-4 flex flex-col fixed left-0  h-full overflow-y-scroll">
+      <div className="pb-3 lg:pt-4  ">
         <div className="flex items-center">
-          {/* <button type="button" className="btn">
-             <i className="tio-search"></i> 
-          </button> */}
+         
           <input
             type="text"
+<<<<<<< HEAD
+            className="ml-2 p-2 bg-primary border text-white border-white rounded-md focus:outline-none w-full placeholder-white"
+=======
             className="ml-2 p-2 bg-primary  text-white border border-white rounded-md focus:outline-none w-full"
+>>>>>>> d8ede99d8f6fa8198005cb844e5dfb2561aa35c3
             placeholder="Search menu..."
           />{" "}
         </div>
       </div>
+     
+      
 
       {/* Dashboard and POS buttons */}
       <Link
@@ -236,11 +240,11 @@ const Sidebar = ({ setComponent }) => {
 
       {/* order management */}
       <div className="mt-4">
-        <small className="block text-gray-400 uppercase font-serif">
+        <small className="block text-white uppercase font-serif">
           Order Management
         </small>
         <button
-          className="w-full text-left p-2 rounded hover:bg-[#52c970] text-white hover:text-white flex justify-between relative text-blue-700"
+          className="w-full text-left p-2 rounded hover:bg-[#52c970] text-white hover:text-white flex justify-between relative "
           onClick={togglePageList}
           style={{ color: "white" }}
         >
@@ -457,9 +461,7 @@ const Sidebar = ({ setComponent }) => {
 
       {/* Category Management Section */}
       <div className="mt-4">
-        <small className="block text-gray-400 uppercase">
-          product management
-        </small>
+        <small className="block text-white uppercase">product management</small>
         <button
           className="block w-full text-left p-2  rounded hover:bg-[#52c970] text-white  flex justify-between hover:text-white mb-2 relative"
           onClick={toggleProductList}
@@ -683,7 +685,7 @@ const Sidebar = ({ setComponent }) => {
       </Link>
       {/* promotion setup*/}
       <div className="mt-4">
-        <small className="block text-gray-400 uppercase">
+        <small className="block text-white uppercase">
           promotion management
         </small>
         <Link
@@ -794,9 +796,7 @@ const Sidebar = ({ setComponent }) => {
 
       {/* Help and Support */}
       <div className="mt-4">
-        <small className="block text-gray-400 uppercase">
-          HELP AND SUPPORT
-        </small>
+        <small className="block text-white uppercase">HELP AND SUPPORT</small>
         <Link
           to="indexmessage"
           className="block w-full flex  align-items-center text-left p-2  rounded hover:bg-[#52c970] text-white hover:text-white mb-3"
@@ -825,9 +825,7 @@ const Sidebar = ({ setComponent }) => {
       {/* Sales management Section */}
 
       <div className="mt-4">
-        <small className="block text-gray-400 uppercase">
-          REPORT & ANALYSIS
-        </small>
+        <small className="block text-white uppercase">REPORT & ANALYSIS</small>
         <button
           className="block w-full text-left p-2  rounded hover:bg-[#52c970] flex items-ceter gap-2 text-white hover:text-white text-white hover:text-[#7EC283] mb-2 relative"
           style={{ color: "white" }}
@@ -903,7 +901,7 @@ const Sidebar = ({ setComponent }) => {
       {/* user management Section */}
 
       <div className="mt-4">
-        <small className="block text-gray-400 uppercase">User management</small>
+        <small className="block text-white uppercase">User management</small>
         <button
           className="block w-full text-left p-2  rounded hover:bg-[#52c970] flex items-ceter gap-2 text-white hover:text-white text-white hover:text-[#7EC283] mb-2 relative"
           style={{ color: "white" }}
@@ -1066,7 +1064,7 @@ const Sidebar = ({ setComponent }) => {
       {/* ********************** */}
 
       <div className="mt-4">
-        <small className="block text-gray-400 uppercase">System settings</small>
+        <small className="block text-white uppercase">System settings</small>
         <button
           className="block w-full text-left p-2  rounded hover:bg-[#52c970] flex items-ceter gap-2 text-white hover:text-white text-white hover:text-[#7EC283] mb-2 relative"
           style={{ color: "white" }}
