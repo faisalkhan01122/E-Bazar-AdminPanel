@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { FaDownload, FaEye, FaSearch, FaUser } from "react-icons/fa";
+import ActionButton from "../../components/ActionButton/Action";
+import ExportButton from "../../components/ActionButton/Export";
 
 const CustomerDetails = ({
   customerId = "2",
@@ -27,7 +29,7 @@ const CustomerDetails = ({
   };
 
   return (
-    <div className="container mx-auto my-4 p-4">
+    <div className="mx-5  md:p-4">
       <div className="flex items-center mb-4">
         <FaUser className="w-6 h-6 mr-2" />
         <h1 className="text-2xl font-bold text-gray-800">Customer Details</h1>
@@ -43,7 +45,7 @@ const CustomerDetails = ({
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-4 mb-6">
+      <div className="flex flex-col md:flex-row  gap-4 mb-6">
         <div className="flex-grow">
           {/* Search Input */}
           <div className="mb-4 flex">
@@ -52,26 +54,28 @@ const CustomerDetails = ({
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by Order ID or Total"
-              className="flex-grow border border-gray-300 rounded-l-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="flex-grow border w-5 md:w-full border-gray-300 rounded-l-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <button
               onClick={handleSearch}
-              className="bg-green-500 text-white px-4 py-2 rounded-r-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 flex items-center"
+              className="bg-primary text-white px-4 py-2 rounded-r-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary flex items-center"
             >
-              <FaSearch className="w-5 h-5" />
-              <span className="ml-2 hidden sm:inline">Search</span>
+              <FaSearch className="w-5 h-5 text-white" />
+              <span className="ml-2  sm:inline" style={{ color: "white" }}>
+                Search
+              </span>
             </button>
           </div>
 
           {/* Orders Table */}
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
+          <div className="overflow-x-auto shadow-sm rounded-md bg-white">
+            <table className="w-full  border-collapse">
               <thead>
-                <tr className="bg-gray-100">
-                  <th className="border p-2 text-left">SI</th>
-                  <th className="border p-2 text-left">Order ID</th>
-                  <th className="border p-2 text-left">Total</th>
-                  <th className="border p-2 text-left">Action</th>
+                <tr className="bg-secondary font-bold text-[1rem]">
+                  <th className="border p-2 text-center">SI</th>
+                  <th className="border p-2 text-center">Order ID</th>
+                  <th className="border p-2 text-center">Total</th>
+                  <th className="border p-2 text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -82,11 +86,18 @@ const CustomerDetails = ({
                     <td className="border p-2">{order.total}</td>
                     <td className="border p-2">
                       <div className="flex space-x-2">
-                        <button className="btn border-green-500 text-green-500 hover:bg-green-500 hover:text-white">
+                        {/* <button className="btn border-primary text-primary hover:bg-primary hover:text-white">
                           <FaEye className="w-5 h-5" />
                         </button>
-                        <button className="p-1 text-green-500 hover:bg-green-100 rounded">
-                          <FaDownload className="w-5 h-5" />
+                        */}
+                        <ActionButton
+                          // to={`/brandupdate/${brand._id}`}
+                          icon={FaEye} // Pass dynamic icon
+                          className="ml-4"
+                          label="View"
+                        />
+                        <button className="px-3 py-2 bg-primary hover:bg-primary-dark text-white rounded">
+                          <FaDownload className="w-4 h-4 text-white" />
                         </button>
                       </div>
                     </td>
@@ -98,7 +109,7 @@ const CustomerDetails = ({
         </div>
 
         {/* Customer Info */}
-        <div className="bg-white rounded-lg shadow-md p-6 w-full md:w-80">
+        <div className="bg-white rounded-lg shadow-sm p-6 w-full md:w-80">
           <div className="flex items-center mb-4">
             <FaUser className="w-6 h-6 text-gray-500 mr-2" />
             <h2 className="text-xl font-semibold text-gray-700">Customer</h2>
@@ -108,7 +119,7 @@ const CustomerDetails = ({
             <img
               src={logoUrl}
               alt="Company logo"
-              className="rounded-md h-20 w-20"
+              className="rounded-md h-24 w-20"
             />
             <div className="space-y-2">
               <h3 className="text-[1rem] font-semibold text-gray-800">
@@ -120,9 +131,9 @@ const CustomerDetails = ({
               <p className="text-[1rem] text-gray-700  font-semibold">
                 {phone}
               </p>
-              <p className="text-[1rem] text-gray-700">{email}</p>
             </div>
           </div>
+          <p className="text-[1rem] text-gray-700">{email}</p>
         </div>
       </div>
     </div>
