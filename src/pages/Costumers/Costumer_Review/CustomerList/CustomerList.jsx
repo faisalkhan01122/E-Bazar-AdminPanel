@@ -100,7 +100,7 @@ const CustomerList = React.memo(() => {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
-                  <div className="bg-[#A1CB46] space-x-4 text-white space-x-2 hover:bg-[#7e9f37] input-group-text">
+                  <div className="bg-primary space-x-4 text-white  hover:bg-primary-dark input-group-text">
                     <FaSearch /> <h1>Search</h1>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const CustomerList = React.memo(() => {
                   filename="UserList" // Optional filename for the exported file
                   icon={FaDownload} // Icon for the button
                   label="Export " // Button label
-                  className="bg-[#A1CB46] text-white hover:bg-[#7e9f37]" // Tailwind classes for styling
+                  className="bg-primary text-white hover:bg-primary-dark" // Tailwind classes for styling
                   style={{ color: "white" }} // Optional inline styles
                 />
               </div>

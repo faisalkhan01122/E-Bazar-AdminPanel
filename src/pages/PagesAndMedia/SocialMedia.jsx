@@ -6,9 +6,11 @@ import {
   FaLinkedin,
   FaPinterest,
   FaGoogle,
+  FaTrash,
 } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import "./SocialMedia.css";
+import ActionButton from "../../components/ActionButton/Action";
 const SocialMedia = () => {
   const [formData, setFormData] = useState({ name: "", link: "", id: null });
   const [socialMediaLinks, setSocialMediaLinks] = useState([
@@ -87,7 +89,9 @@ const SocialMedia = () => {
         <div className="col-md-12">
           <div className="card">
             <div className="card-header">
-              <h5 className="mb-0">Social media form</h5>
+              <h5 className="mb-0 text-[1rem] font-semibold">
+                Social media form
+              </h5>
             </div>
             <div className="card-body">
               <form
@@ -145,7 +149,8 @@ const SocialMedia = () => {
                   <button
                     type="submit"
                     id="actionBtn"
-                    className="btn px-4 py-2 bg-[#A1CB46] text-white hover:bg-[#7e9f37]"
+                    className="btn px-4 py-2 bg-primary text-white hover:bg-primary-dark"
+                    style={{ color: "white" }}
                   >
                     Save
                   </button>
@@ -170,7 +175,9 @@ const SocialMedia = () => {
         <div className="col-md-12">
           <div className="card">
             <div className="px-3 py-4">
-              <h5 className="mb-0 d-flex">Social media table</h5>
+              <h5 className="mb-0 text-[1rem] font-semibold d-flex">
+                Social media table
+              </h5>
             </div>
             <div className="pb-3">
               <div className="table-responsive">
@@ -233,13 +240,19 @@ const SocialMedia = () => {
                           </form>
                         </td>
                         <td>
-                          <button
+                          {/* <button
                             type="button"
-                            className="btn px-4 py-2 bg-[#A1CB46] text-white hover:bg-[#7e9f37] btn-xs edit square-btn"
+                            className="btn px-4 py-2 bg-primary text-white hover:bg-primary-dark btn-xs edit square-btn"
                             onClick={() => handleEdit(link.id)}
                           >
                             <MdEdit />
-                          </button>
+                          </button> */}
+                          <ActionButton
+                            onClick={() => handleEdit(link.id)}
+                            icon={FaTrash} // Pass dynamic icon
+                            className="ml-4"
+                            label="Delete"
+                          />
                         </td>
                       </tr>
                     ))}

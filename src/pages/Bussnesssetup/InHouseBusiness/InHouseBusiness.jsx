@@ -95,7 +95,8 @@ const InHouseBusiness = () => {
               </button>
               <a
                 href="https://6valley.6amtech.com/admin/product-settings/inhouse-shop"
-                className="btn px-4 py-2 bg-[#A1CB46] text-white hover:bg-[#7e9f37] d-flex gap-2 align-items-center"
+                className="btn px-4 py-2 bg-primary text-white hover:bg-primary-dark d-flex gap-2 align-items-center"
+                style={{ color: "white" }}
               >
                 Back
               </a>
@@ -153,7 +154,8 @@ const InHouseBusiness = () => {
               <div className="d-flex justify-content-end mt-30">
                 <button
                   type="submit"
-                  className="btn px-4 py-2 bg-[#A1CB46] text-white hover:bg-[#7e9f37] "
+                  className="btn px-4 py-2 bg-primary text-white hover:bg-primary-dark "
+                  style={{ color: "white" }}
                 >
                   {" "}
                   Save information{" "}

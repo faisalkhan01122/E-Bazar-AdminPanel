@@ -349,7 +349,7 @@ const WalletManagement = () => {
                 filename="CustomerWallet" // Optional filename for the exported file
                 icon={FaDownload} // Icon for the button
                 label="Export " // Button label
-                className="bg-[#A1CB46] text-white hover:bg-[#7e9f37]" // Tailwind classes for styling
+                className="bg-primary text-white hover:bg-primary-dark" // Tailwind classes for styling
                 style={{ color: "white" }} // Optional inline styles
               />
             </div>

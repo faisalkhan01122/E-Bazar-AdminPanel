@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import "./CustomerReview.css";
 import { FaEye } from "react-icons/fa";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 import { MdOutlineStarPurple500, MdStarBorder } from "react-icons/md";
 import ApiUrl from "../../../ApiUrl";
@@ -18,17 +18,19 @@ const CustomerReviews = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const id = '66a2231f79ae861206f8f8f9';
+        const id = "66a2231f79ae861206f8f8f9";
         const response = await axios.get(`${ApiUrl}reviews/`);
         const fetchedProducts = response.data.doc;
 
         // Filter products that have reviews
-        const productsWithReviews = fetchedProducts.filter(product => product.reviews && product.reviews.length > 0);
+        const productsWithReviews = fetchedProducts.filter(
+          (product) => product.reviews && product.reviews.length > 0
+        );
 
         setProducts(productsWithReviews);
         setHasReviews(productsWithReviews.length > 0);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       }
     };
 
@@ -46,58 +48,65 @@ const CustomerReviews = () => {
   };
 
   const handleStatusChange = async (reviewId, currentStatus) => {
-    const newStatus = currentStatus === 'Active' ? 'Inactive' : 'Active';
-    
+    const newStatus = currentStatus === "Active" ? "Inactive" : "Active";
+
     const result = await Swal.fire({
-      title: 'Are you sure?',
-      text: `Do you want to ${newStatus === 'Active' ? 'activate' : 'deactivate'} this review?`,
-      icon: 'warning',
+      title: "Are you sure?",
+      text: `Do you want to ${
+        newStatus === "Active" ? "activate" : "deactivate"
+      } this review?`,
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, update it!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, update it!",
     });
 
     if (result.isConfirmed) {
       try {
-        await axios.patch(`${ApiUrl}/products/${reviewId}/status`, { status: newStatus });
+        await axios.patch(`${ApiUrl}/products/${reviewId}/status`, {
+          status: newStatus,
+        });
         // Update the local state to reflect the status change
-        setProducts(products.map(product => ({
-          ...product,
-          reviews: product.reviews.map(review =>
-            review._id === reviewId ? { ...review, status: newStatus } : review
-          ),
-        })));
-        
+        setProducts(
+          products.map((product) => ({
+            ...product,
+            reviews: product.reviews.map((review) =>
+              review._id === reviewId
+                ? { ...review, status: newStatus }
+                : review
+            ),
+          }))
+        );
+
         Swal.fire(
-          'Updated!',
-          `The review has been ${newStatus === 'Active' ? 'activated' : 'deactivated'}.`,
-          'success'
+          "Updated!",
+          `The review has been ${
+            newStatus === "Active" ? "activated" : "deactivated"
+          }.`,
+          "success"
         );
       } catch (error) {
-        console.error('Error updating review status:', error);
+        console.error("Error updating review status:", error);
         Swal.fire(
-          'Error!',
-          'There was an error updating the review status.',
-          'error'
+          "Error!",
+          "There was an error updating the review status.",
+          "error"
         );
       }
     }
   };
 
-  
-
   const formatDate = (dateString) => {
     try {
       const date = new Date(dateString);
-      if (isNaN(date.getTime())) throw new Error('Invalid Date');
-      return format(date, 'd/MMM/yyyy').toLowerCase(); // 7/oct/2024
+      if (isNaN(date.getTime())) throw new Error("Invalid Date");
+      return format(date, "d/MMM/yyyy").toLowerCase(); // 7/oct/2024
     } catch (error) {
-      console.error('Date formatting error:', error);
-      return 'Invalid Date';
+      console.error("Date formatting error:", error);
+      return "Invalid Date";
     }
   };
-  
 
   return (
     <div className="content container-fluid snipcss-Ms29G">
@@ -117,7 +126,12 @@ const CustomerReviews = () => {
             <h5 className="text-capitalize d-flex gap-2 align-items-center">
               Review table
               <span className="badge badge-soft-dark radius-50 fz-12">
-                {hasReviews ? products.reduce((acc, product) => acc + product.reviews.length, 0) : 0}
+                {hasReviews
+                  ? products.reduce(
+                      (acc, product) => acc + product.reviews.length,
+                      0
+                    )
+                  : 0}
               </span>
             </h5>
           </div>
@@ -140,7 +154,8 @@ const CustomerReviews = () => {
                 />
                 <button
                   type="submit"
-                  className="btn px-4 py-2 bg-[#A1CB46] text-white hover:bg-[#7e9f37]"
+                  className="btn px-4 py-2 bg-primary text-white hover:bg-primary-dark"
+                  style={{ color: "white" }}
                 >
                   Search
                 </button>
@@ -196,7 +211,7 @@ const CustomerReviews = () => {
               <div>
                 <button
                   type="submit"
-                  className="btn px-3 px-4 py-2 bg-[#A1CB46] text-white hover:bg-[#7e9f37]"
+                  className="btn px-3 px-4 py-2 bg-primary text-white hover:bg-primary-dark"
                 >
                   Filter
                 </button>
@@ -225,48 +240,60 @@ const CustomerReviews = () => {
                     <tr key={`${product._id}-${reviewIndex}`}>
                       <td className="text-center">{index + 1}</td>
                       <td>
-                    {product.name || "N/A"} 
-                    {product.thumbnail && (
-                      <img 
-                        src={`${ImageApiUrl}/${product.thumbnail}`} 
-                        alt={product.name} 
-                        className="product-thumbnail" 
-                        style={{ width: '70px', height: '70px', objectFit: 'cover' }}
-                      />
-                    )}
-                  </td>
+                        {product.name || "N/A"}
+                        {product.thumbnail && (
+                          <img
+                            src={`${ImageApiUrl}/${product.thumbnail}`}
+                            alt={product.name}
+                            className="product-thumbnail"
+                            style={{
+                              width: "70px",
+                              height: "70px",
+                              objectFit: "cover",
+                            }}
+                          />
+                        )}
+                      </td>
                       <td>{review.customer?.name || "N/A"}</td>
                       <td className="flex justify-center mt-6 align-items-center">
-                        <div className="d-flex align-items-center gap-1 text-green-400 justify-content-center fz-14 mt-6">
-                          {[...Array(5)].map((_, i) => (
+                        <div className="d-flex align-items-center gap-1 text-primary justify-content-center fz-14 mt-6">
+                          {[...Array(5)].map((_, i) =>
                             i < review.rating ? (
-                              <MdOutlineStarPurple500 key={i} className="text-green-400" />
+                              <MdOutlineStarPurple500
+                                key={i}
+                                className="text-primary"
+                              />
                             ) : (
                               <MdStarBorder key={i} className="text-gray-300" />
                             )
-                          ))}
+                          )}
                         </div>
                       </td>
                       <td>{review.reviewText || "No review text"}</td>
-                      <td>{new Date(review.createdAt).toLocaleDateString() || "No date"}</td>
-                   
+                      <td>
+                        {new Date(review.createdAt).toLocaleDateString() ||
+                          "No date"}
+                      </td>
+
                       <td>
                         <label className="switcher mx-auto">
                           <input
                             type="checkbox"
                             className="switcher_input toggle-switch-message"
                             id={`reviews-status${review._id}`}
-                            checked={review.status === 'Active'}
-                            onChange={() => handleStatusChange(review._id, review.status)}
+                            checked={review.status === "Active"}
+                            onChange={() =>
+                              handleStatusChange(review._id, review.status)
+                            }
                           />
                           <span className="switcher_control"></span>
                         </label>
                       </td>
-                      <td className="border-green-400 border-t-0 border-b-0 text-center">
+                      <td className="border-primary border-t-0 border-b-0 text-center">
                         <FaEye
                           size={18}
                           color="#A1CB46"
-                          style={{ cursor: 'pointer' }}
+                          style={{ cursor: "pointer" }}
                           onClick={() => handleViewClick(review)}
                         />
                       </td>
@@ -286,29 +313,69 @@ const CustomerReviews = () => {
       </div>
 
       {isModalOpen && selectedReview && (
-        <div className="modal fade show" id="reviewDetailsModal" tabIndex="-1" aria-labelledby="reviewDetailsModalLabel" aria-hidden="true" style={{ display: 'block' }}>
+        <div
+          className="modal fade show"
+          id="reviewDetailsModal"
+          tabIndex="-1"
+          aria-labelledby="reviewDetailsModalLabel"
+          aria-hidden="true"
+          style={{ display: "block" }}
+        >
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
               <div className="modal-header font-bold">
-                <h5 className="modal-title" id="reviewDetailsModalLabel">Review Details</h5>
-                <button type="button" className="btn-close" onClick={closeModal}></button>
+                <h5 className="modal-title" id="reviewDetailsModalLabel">
+                  Review Details
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={closeModal}
+                ></button>
               </div>
               <div className="modal-body p-5 mb-2">
                 <h5 className="text-capitalize ">Review Details</h5>
-                <p><strong>Product:</strong> {selectedReview.product?.name || "N/A"}</p>
-                <p><strong>Customer:</strong> {selectedReview.customer?.name || "N/A"}</p>
-                <p className="flex "> <strong>Rating:</strong> {[...Array(5)].map((_, i) => (
-                  i < selectedReview.rating ? (
-                    <MdOutlineStarPurple500 key={i} className="text-green-400" />
-                  ) : (
-                    <MdStarBorder key={i} className="text-gray-300" />
-                  )
-                ))}</p>
-                <p><strong>Review:</strong> {selectedReview.reviewText || "No review text"}</p>
-                <p><strong>Date:</strong> {new Date(selectedReview.createdAt).toLocaleDateString() || "No date"}</p>
+                <p>
+                  <strong>Product:</strong>{" "}
+                  {selectedReview.product?.name || "N/A"}
+                </p>
+                <p>
+                  <strong>Customer:</strong>{" "}
+                  {selectedReview.customer?.name || "N/A"}
+                </p>
+                <p className="flex ">
+                  {" "}
+                  <strong>Rating:</strong>{" "}
+                  {[...Array(5)].map((_, i) =>
+                    i < selectedReview.rating ? (
+                      <MdOutlineStarPurple500
+                        key={i}
+                        className="text-primary"
+                      />
+                    ) : (
+                      <MdStarBorder key={i} className="text-gray-300" />
+                    )
+                  )}
+                </p>
+                <p>
+                  <strong>Review:</strong>{" "}
+                  {selectedReview.reviewText || "No review text"}
+                </p>
+                <p>
+                  <strong>Date:</strong>{" "}
+                  {new Date(selectedReview.createdAt).toLocaleDateString() ||
+                    "No date"}
+                </p>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn bg-green-400 text-white hover:bg-green-700"  onClick={closeModal}>Close</button>
+                <button
+                  type="button"
+                  className="btn bg-primary text-white hover:bg-primary-dark"
+                  onClick={closeModal}
+                  style={{ color: "white" }}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
@@ -319,4 +386,3 @@ const CustomerReviews = () => {
 };
 
 export default CustomerReviews;
-
