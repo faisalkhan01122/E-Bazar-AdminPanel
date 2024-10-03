@@ -211,8 +211,8 @@ const Sidebar = ({ setComponent }) => {
           </button> */}
           <input
             type="text"
-            className="ml-2 p-2  bg-primary border border-white rounded-md focus:outline-none w-full"
-            laceholder="Search menu..."
+            className="ml-2 p-2 bg-primary  text-white border border-white rounded-md focus:outline-none w-full"
+            placeholder="Search menu..."
           />{" "}
         </div>
       </div>
