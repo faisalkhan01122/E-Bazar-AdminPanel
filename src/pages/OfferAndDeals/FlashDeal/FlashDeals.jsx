@@ -8,6 +8,8 @@ import "./FlashDeals.css";
 import ApiUrl from "../../../ApiUrl";
 import ExportButton from "../../../components/ActionButton/Export";
 import ActionButton from "../../../components/ActionButton/Action";
+import PreviewImage from "../../../components/FormInput/PreviewImage";
+import FileUpload from "../../../components/FormInput/FileUpload";
 
 const FlashDeals = () => {
   const [activeLang, setActiveLang] = useState("en");
@@ -39,9 +41,24 @@ const FlashDeals = () => {
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData({ ...formData, [name]: files ? files[0] : value });
+  // const handleInputChange = (e) => {
+  //   const { name, value, files } = e.target;
+  //   setFormData({ ...formData, [name]: files ? files[0] : value });
+  // };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleImageChange = (event) => {
+    const { name, files } = event.target;
+    setFormData({
+      ...formData,
+      [name]: files[0],
+    });
   };
 
   const handleFormSubmit = async (e) => {
@@ -96,6 +113,7 @@ const FlashDeals = () => {
       );
 
       setFlashDeals((prevDeals) => [...prevDeals, response.data]);
+
       setFormData({ title: "", startDate: "", endDate: "", image: null });
       Swal.fire({
         icon: "success",
@@ -120,9 +138,9 @@ const FlashDeals = () => {
   const handleSwitcherChange = async (id) => {
     const dealToUpdate = flashDeals.find((deal) => deal._id === id);
     try {
-      const token = localStorage.getItem("authToken");
-      const response = await axios.patch(
-        `${ApiUrl}flash-deals/${id}/update-publish`,
+      const token = localStorage.getItem("token");
+      const response = await axios.put(
+        `${ApiUrl}flash-deals/${id}`,
         {
           publish: !dealToUpdate.publish,
         },
@@ -278,7 +296,7 @@ const FlashDeals = () => {
                     </div>
                   </div>
 
-                  <div className="col-lg-6">
+                  {/* <div className="col-lg-6">
                     <div className="form-group">
                       <label
                         htmlFor="image"
@@ -305,6 +323,19 @@ const FlashDeals = () => {
                         />
                       </div>
                     )}
+                  </div> */}
+                  <div className="col-lg-6 ">
+                    <PreviewImage
+                      image={formData.image}
+                      altText="flash image"
+                      style={{ width: "200px" }}
+                    />
+                    <FileUpload
+                      name="image"
+                      label="Vendor Image (Ratio 1:1)"
+                      accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
+                      onChange={handleImageChange}
+                    />
                   </div>
                 </div>
 
@@ -315,7 +346,8 @@ const FlashDeals = () => {
                 <div className="d-flex justify-content-end">
                   <button
                     type="submit"
-                    className="btn bg-[#A1CB46] text-white hover:bg-[#7e9f37]"
+                    className="btn bg-primary text-white hover:bg-primary-dark"
+                    style={{ color: "white" }}
                   >
                     Add Flash Deal
                   </button>
@@ -390,13 +422,24 @@ const FlashDeals = () => {
                               />
                               <span className="switcher_control"></span>
                             </label> */}
-                            <label className="switch">
+                            {/* <label className="switch">
                               <input
                                 type="checkbox"
                                 checked={deal.publish}
                                 onChange={() => handleSwitcherChange(deal._id)}
                               />
                               <span className="slider round"></span>
+                            </label> */}
+                            <label className="switcher mx-auto">
+                              <input
+                                type="checkbox"
+                                className="switcher_input"
+                                checked={deal?.publish}
+                                // checked={deal.publish === "true"}
+
+                                onChange={() => handleSwitcherChange(deal._id)}
+                              />
+                              <span className="switcher_control" />
                             </label>
                           </td>
                           <td>

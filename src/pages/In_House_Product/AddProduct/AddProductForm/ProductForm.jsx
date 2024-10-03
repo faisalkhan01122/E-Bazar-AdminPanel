@@ -22,7 +22,7 @@ const ProductForm = ({
     <div>
       <div className="col-12 lightshadow p-5 shadow-md rounded-md">
         <div className="flex flex-col gap-2">
-          <label className="font-semibold">Product Name</label>
+          <label className="font-semibold">Product </label>
           <input
             type="text"
             name="name"
@@ -33,7 +33,7 @@ const ProductForm = ({
             required
           />
         </div>
-        <div className="flex flex-col gap-2 mt-4">
+        <div className="flex flex-col gap-4 m-4">
           <label className="font-semibold">Product Description</label>
           <textarea
             name="description"

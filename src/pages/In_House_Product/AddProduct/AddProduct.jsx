@@ -14,6 +14,7 @@ import { createProduct } from "../../../components/redux/product/productSlice";
 import ReactQuill from "react-quill";
 import "./form.css";
 const AddNewProduct = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const userId = user._id;
@@ -108,7 +109,11 @@ const AddNewProduct = () => {
   // };
 
   const handleImageChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedImage(e.target.files[0]);
+    }
     const files = Array.from(e.target.files);
+
     const newPreviews = files.map((file) => URL.createObjectURL(file));
 
     setImages((prevImages) => [...prevImages, ...files]);
@@ -220,6 +225,7 @@ const AddNewProduct = () => {
 
   const removeImage = (index) => {
     setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+    setSelectedImage(null);
   };
 
   const removeThumbnail = () => {
@@ -245,8 +251,8 @@ const AddNewProduct = () => {
             className="bg-white shadow-md rounded-lg space-y-4 p-10"
           >
             {/* Form inputs for each field */}
-            <div className="col-12 lightshadow p-5  shadow-md  rounded-md">
-              <div className="flex flex-col gap-2">
+            <div className="col-12 lightshadow p-4  shadow-md  rounded-md">
+              <div className="flex flex-col ">
                 <label className="font-semibold">Product Name</label>
                 <input
                   type="text"
@@ -266,21 +272,21 @@ const AddNewProduct = () => {
    
       </div> */}
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col mt-4 ">
                 <label className="font-semibold">Product Description</label>
                 <ReactQuill
                   name="description"
                   value={formData.description}
                   onChange={handleDescriptionChange}
-                  className="quill-editor p-2 border rounded"
+                  className="quill-editor "
                   theme="snow"
                   placeholder="Write the product description here..."
                 />
               </div>
             </div>
 
-            <div className="col-12  p-5 flex flex-wrap  shadow-md  rounded-md">
-              <div className="flex flex-col w-full lg:w-1/3 gap-1">
+            <div className="col-12  p-5 flex flex-wrap  shadow-md rounded-md">
+              <div className="flex flex-col w-full lg:w-1/3 gap-1 px-2">
                 <label className="font-semibold">Category</label>
                 <select
                   name="category"
@@ -304,7 +310,7 @@ const AddNewProduct = () => {
                 </select>
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/3 gap-1">
+              <div className="flex flex-col w-full lg:w-1/3 gap-1 px-2">
                 <label className="font-semibold">Sub-Category</label>
                 <select
                   name="subCategorySlug"
@@ -327,7 +333,7 @@ const AddNewProduct = () => {
                 </select>
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/3 gap-1">
+              <div className="flex flex-col w-full lg:w-1/3 gap-1 px-2">
                 <label className="font-semibold">Sub-Sub-Category</label>
                 <select
                   name="subSubCategorySlug"
@@ -353,7 +359,7 @@ const AddNewProduct = () => {
                 </select>
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/3 gap-1 mt-3">
+              <div className="flex flex-col w-full lg:w-1/3 gap-1 mt-3 px-2">
                 <label className="font-semibold">Brand</label>
                 <select
                   name="brand"
@@ -373,7 +379,7 @@ const AddNewProduct = () => {
               </div>
 
               {/* Product Type */}
-              <div className="flex flex-col w-full lg:w-1/3 gap-1 mt-3">
+              <div className="flex flex-col w-full lg:w-1/3 gap-1 mt-3 px-2">
                 <label className="font-semibold">Product Type</label>
                 <select
                   name="productType"
@@ -409,7 +415,7 @@ const AddNewProduct = () => {
                 </div>
               )}
 
-              <div className="flex flex-col w-full lg:w-1/3 gap-1 mt-3">
+              <div className="flex flex-col w-full lg:w-1/3 gap-1 px-2 mt-3">
                 <label className="font-semibold">SKU</label>
                 <input
                   type="text"
@@ -422,7 +428,7 @@ const AddNewProduct = () => {
                 />
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/3 gap-1 mt-3">
+              <div className="flex flex-col w-full lg:w-1/3 gap-1 mt-3 px-2">
                 <label className="font-semibold">Unit</label>
                 <input
                   type="text"
@@ -435,7 +441,7 @@ const AddNewProduct = () => {
                 />
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/3 gap-1 mt-3">
+              <div className="flex flex-col w-full lg:w-1/3 gap-1  mt-3 px-2">
                 <label className="font-semibold">Tags</label>
                 <input
                   type="text"
@@ -449,7 +455,7 @@ const AddNewProduct = () => {
             </div>
 
             <div className="col-12  p-5 flex flex-wrap  shadow-md  rounded-md">
-              <div className="flex flex-col w-full lg:w-1/4 gap-1 mb-4">
+              <div className="flex flex-col w-full lg:w-1/4 gap-1 px-2 mb-4">
                 <label className="font-semibold">Price</label>
                 <input
                   type="number"
@@ -462,7 +468,7 @@ const AddNewProduct = () => {
                 />
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/4 gap-1 mb-4">
+              <div className="flex flex-col w-full lg:w-1/4 gap-1 px-2 mb-4">
                 <label className="font-semibold">Discount</label>
                 <input
                   type="number"
@@ -474,7 +480,7 @@ const AddNewProduct = () => {
                 />
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/4 gap-1 mb-4">
+              {/* <div className="flex flex-col w-full lg:w-1/4 gap-1 px-2 mb-4">
                 <label className="font-semibold">Discount Type</label>
                 <select
                   name="discountType"
@@ -488,7 +494,7 @@ const AddNewProduct = () => {
                 </select>
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/4 gap-1 mb-4">
+              <div className="flex flex-col w-full lg:w-1/4 px-2 gap-1 mb-4">
                 <label className="font-semibold">Discount Amount</label>
                 <input
                   type="number"
@@ -498,9 +504,49 @@ const AddNewProduct = () => {
                   placeholder="Discount Amount"
                   className="p-2 border rounded"
                 />
+              </div> */}
+              <div className="flex flex-col w-full lg:w-1/4 gap-1 px-2 mb-4">
+                <label className="font-semibold">Discount Type</label>
+                <select
+                  name="discountType"
+                  value={formData.discountType}
+                  onChange={handleChange}
+                  className="p-2 border rounded bg-white"
+                >
+                  <option value="">Select Discount Type</option>
+                  <option value="percent">Percentage</option>
+                  <option value="flat">Flat Amount</option>
+                </select>
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/4 gap-1 mb-4">
+              <div className="flex flex-col w-full lg:w-1/4 px-2 gap-1 mb-4">
+                <label className="font-semibold">Discount Amount</label>
+                <div className="relative">
+                  <input
+                    type="number"
+                    name="discountAmount"
+                    value={formData.discountAmount}
+                    onChange={handleChange}
+                    placeholder={`Discount Amount (${
+                      formData.discountType === "percent"
+                        ? "%"
+                        : formData.discountType === "flat"
+                        ? "$"
+                        : ""
+                    })`}
+                    className="p-2 border rounded w-full pl-8"
+                  />
+                  <span className="absolute left-2 top-2.5 text-gray-500">
+                    {formData.discountType === "percent"
+                      ? "%"
+                      : formData.discountType === "flat"
+                      ? "$"
+                      : ""}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex flex-col w-full lg:w-1/4 px-2 gap-1 mb-4">
                 <label className="font-semibold">Tax Amount</label>
                 <input
                   type="number"
@@ -512,7 +558,7 @@ const AddNewProduct = () => {
                 />
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/4 gap-1 mb-4 ">
+              <div className="flex flex-col w-full px-2 lg:w-1/4 gap-1 mb-4 ">
                 <label className="font-semibold">Tax Included</label>
                 <div className="row flex gap-3 justify-center items-center">
                   <input
@@ -530,7 +576,7 @@ const AddNewProduct = () => {
             </div>
 
             <div className="col-12  p-8 flex flex-wrap  shadow-md  rounded-md ">
-              <div className="flex flex-col w-full lg:w-1/3 gap-2">
+              <div className="flex flex-col w-full lg:w-1/3 px-2 gap-2">
                 <label className="font-semibold">Minimum Order Quantity</label>
                 <input
                   type="number"
@@ -542,7 +588,7 @@ const AddNewProduct = () => {
                 />
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/3 gap-2">
+              <div className="flex flex-col w-full lg:w-1/3 px-2 gap-2">
                 <label className="font-semibold">Shipping Cost</label>
                 <input
                   type="number"
@@ -554,7 +600,7 @@ const AddNewProduct = () => {
                 />
               </div>
 
-              <div className="flex flex-col w-full lg:w-1/3 gap-2">
+              <div className="flex flex-col w-full lg:w-1/3 px-2 gap-2">
                 <label className="font-semibold">Stock</label>
                 <input
                   type="number"
@@ -568,7 +614,7 @@ const AddNewProduct = () => {
             </div>
 
             <div className="col-12  p-5 flex flex-wrap  shadow-md  rounded-md">
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 px-2">
                 <label className="font-semibold">Video Link</label>
                 <input
                   type="text"
@@ -582,7 +628,7 @@ const AddNewProduct = () => {
             </div>
 
             <div className="col-12  p-5 flex flex-wrap  shadow-md  rounded-md">
-              <div className="flex flex-col w-full lg:w-1/2 gap-2">
+              <div className="flex flex-col w-full lg:w-1/2 px-2 gap-2">
                 <label className="font-semibold">Colors</label>
                 <div className="flex flex-wrap gap-2">
                   {colors.map((color) => (
@@ -649,7 +695,7 @@ const AddNewProduct = () => {
             </div>
 
             <div className="p-5">
-              <div className="col-12 p-5 flex flex-col gap-3 shadow-md rounded-md">
+              {/* <div className="col-12 p-5 flex flex-col gap-3 shadow-md rounded-md">
                 <div className="flex flex-col gap-2">
                   <label className="font-semibold">Product Images</label>
                   <input
@@ -680,9 +726,85 @@ const AddNewProduct = () => {
                     ))}
                   </div>
                 )}
+              </div> */}
+              <div className="col-12 p-5 flex flex-col gap-3 shadow-md rounded-md">
+                <div className="flex flex-col gap-2">
+                  <label className="font-semibold">Product Images</label>
+
+                  <div className="relative flex flex-col items-center justify-center border-dashed border-2 w-36 h-36 border-gray-300 p-6 rounded-md cursor-pointer text-center hover:border-gray-400">
+                    {/* Upload Input */}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="hidden"
+                      id="imageUpload"
+                    />
+
+                    <label
+                      htmlFor="imageUpload"
+                      className="cursor-pointer w-full h-full flex items-center justify-center"
+                    >
+                      {selectedImage ? (
+                        <div className="relative w-full h-full">
+                          {/* Image Preview */}
+                          <img
+                            src={URL.createObjectURL(selectedImage)} // Display the selected image
+                            alt="Preview"
+                            className="w-full h-full object-cover rounded-md" // Make image fit the box
+                          />
+                          {/* Cancel Button */}
+                          <button
+                            type="button"
+                            onClick={removeImage}
+                            className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M6.707 4.293a1 1 0 00-1.414 1.414L8.586 9l-3.293 3.293a1 1 0 101.414 1.414L10 10.414l3.293 3.293a1 1 0 001.414-1.414L11.414 9l3.293-3.293a1 1 0 10-1.414-1.414L10 7.586 6.707 4.293z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center">
+                          {/* Upload Icon and Text */}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-12 w-12 text-gray-400"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M3 15a4 4 0 010-8 5.978 5.978 0 013.25.96M21 13a4 4 0 00-3.25-3.96A5.978 5.978 0 0015 5a6 6 0 00-5.996 5.797M8 15v-2a2 2 0 012-2h4a2 2 0 012 2v2m-6-4l-2 2m8-2l2 2"
+                            />
+                          </svg>
+                          <p className="text-gray-500 mt-2">Upload Image</p>
+                        </div>
+                      )}
+                    </label>
+                  </div>
+
+                  {/* Image Format Info */}
+                  <div className="text-sm text-gray-500 mt-2">
+                    <p>Image format : Jpg, png, jpeg, webp</p>
+                    <p>Image size : Max 2 MB</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="col-12 p-5 flex flex-col gap-3 shadow-md rounded-md">
+              {/* <div className="col-12 p-5 flex flex-col gap-3 mt-4 shadow-md rounded-md">
                 <div className="flex flex-col gap-2">
                   <label className="font-semibold">Product Thumbnail</label>
                   <input
@@ -708,7 +830,61 @@ const AddNewProduct = () => {
                     </div>
                   )}
                 </div>
-              </div>
+              </div> */}
+              <div className="col-12 p-5 flex flex-col gap-3 mt-4 shadow-md rounded-md">
+  <div className="flex flex-col gap-2">
+    <label className="font-semibold">Product Thumbnail</label>
+
+    <div className="relative flex flex-col items-center justify-center border-dashed border-2 w-36 h-36 border-gray-300 p-6 rounded-md cursor-pointer text-center hover:border-gray-400">
+      {/* File Input */}
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleThumbnailChange}
+        className="hidden"
+        id="thumbnailUpload"
+      />
+
+      <label htmlFor="thumbnailUpload" className="cursor-pointer w-full h-full flex items-center justify-center">
+        {imagePreview ? (
+          <div className="relative w-full h-full">
+            {/* Image Preview */}
+            <img
+              src={imagePreview}
+              alt="Thumbnail Preview"
+              className="w-full h-full object-cover rounded-md" // Make image fit the box
+            />
+            {/* Cancel Button */}
+            <button
+              type="button"
+              onClick={removeThumbnail}
+              className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M6.707 4.293a1 1 0 00-1.414 1.414L8.586 9l-3.293 3.293a1 1 0 101.414 1.414L10 10.414l3.293 3.293a1 1 0 001.414-1.414L11.414 9l3.293-3.293a1 1 0 10-1.414-1.414L10 7.586 6.707 4.293z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center">
+            {/* Upload Icon and Text */}
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 010-8 5.978 5.978 0 013.25.96M21 13a4 4 0 00-3.25-3.96A5.978 5.978 0 0015 5a6 6 0 00-5.996 5.797M8 15v-2a2 2 0 012-2h4a2 2 0 012 2v2m-6-4l-2 2m8-2l2 2" />
+            </svg>
+            <p className="text-gray-500 mt-2">Upload Image</p>
+          </div>
+        )}
+      </label>
+    </div>
+
+    {/* Image Format Info */}
+    <div className="text-sm text-gray-500 mt-2">
+      <p>Image format: jpg, png, jpeg, webp</p>
+      <p>Image size: Max 2 MB</p>
+    </div>
+  </div>
+</div>
+
             </div>
 
             <div className="mt-5">
