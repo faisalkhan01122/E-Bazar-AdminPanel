@@ -15,6 +15,9 @@ import ReactQuill from "react-quill";
 import "./form.css";
 const AddNewProduct = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  
+  const [secondImagePreview, setSecondImagePreview] = useState(null);
+  const [showSecondUpload, setShowSecondUpload] = useState(false);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const userId = user._id;
@@ -97,10 +100,21 @@ const AddNewProduct = () => {
 
   const handleThumbnailChange = (e) => {
     const file = e.target.files[0];
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+      setShowSecondUpload(true); // Show the second upload box
+    }
     setThumbnail(file);
     const reader = new FileReader();
     reader.onloadend = () => setImagePreview(reader.result);
     reader.readAsDataURL(file);
+    
+  };
+  const handleSecondImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSecondImagePreview(URL.createObjectURL(file));
+    }
   };
 
   // const handleImageChange = (e) => {
@@ -146,6 +160,7 @@ const AddNewProduct = () => {
       }
     }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -231,8 +246,12 @@ const AddNewProduct = () => {
   const removeThumbnail = () => {
     setThumbnail(null);
     setImagePreview("");
+    setImagePreview(null);
+    setShowSecondUpload(false);
   };
-
+  const removeSecondImage = () => {
+    setSecondImagePreview(null);
+  };
   return (
     <div>
       <main id="content" role="main" className="main pointer-event">
@@ -832,58 +851,105 @@ const AddNewProduct = () => {
                 </div>
               </div> */}
               <div className="col-12 p-5 flex flex-col gap-3 mt-4 shadow-md rounded-md">
-  <div className="flex flex-col gap-2">
-    <label className="font-semibold">Product Thumbnail</label>
+      <div className="flex flex-col gap-2">
+        <label className="font-semibold">Product Thumbnail</label>
+        <div className="relative flex flex-col items-center justify-center border-dashed border-2 w-36 h-36 border-gray-300 p-6 rounded-md cursor-pointer text-center hover:border-gray-400">
+          {/* File Input for Thumbnail */}
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleThumbnailChange}
+            className="hidden"
+            id="thumbnailUpload"
+          />
 
-    <div className="relative flex flex-col items-center justify-center border-dashed border-2 w-36 h-36 border-gray-300 p-6 rounded-md cursor-pointer text-center hover:border-gray-400">
-      {/* File Input */}
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleThumbnailChange}
-        className="hidden"
-        id="thumbnailUpload"
-      />
+          <label htmlFor="thumbnailUpload" className="cursor-pointer w-full h-full flex items-center justify-center">
+            {imagePreview ? (
+              <div className="relative w-full h-full">
+                {/* Thumbnail Image Preview */}
+                <img
+                  src={imagePreview}
+                  alt="Thumbnail Preview"
+                  className="w-full h-full object-cover rounded-md" // Make image fit the box
+                />
+                {/* Cancel Button */}
+                <button
+                  type="button"
+                  onClick={removeThumbnail}
+                  className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M6.707 4.293a1 1 0 00-1.414 1.414L8.586 9l-3.293 3.293a1 1 0 101.414 1.414L10 10.414l3.293 3.293a1 1 0 001.414-1.414L11.414 9l3.293-3.293a1 1 0 10-1.414-1.414L10 7.586 6.707 4.293z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center">
+                {/* Upload Icon and Text */}
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 010-8 5.978 5.978 0 013.25.96M21 13a4 4 0 00-3.25-3.96A5.978 5.978 0 0015 5a6 6 0 00-5.996 5.797M8 15v-2a2 2 0 012-2h4a2 2 0 012 2v2m-6-4l-2 2m8-2l2 2" />
+                </svg>
+                <p className="text-gray-500 mt-2">Upload Image</p>
+              </div>
+            )}
+          </label>
+        </div>
 
-      <label htmlFor="thumbnailUpload" className="cursor-pointer w-full h-full flex items-center justify-center">
-        {imagePreview ? (
-          <div className="relative w-full h-full">
-            {/* Image Preview */}
-            <img
-              src={imagePreview}
-              alt="Thumbnail Preview"
-              className="w-full h-full object-cover rounded-md" // Make image fit the box
-            />
-            {/* Cancel Button */}
-            <button
-              type="button"
-              onClick={removeThumbnail}
-              className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M6.707 4.293a1 1 0 00-1.414 1.414L8.586 9l-3.293 3.293a1 1 0 101.414 1.414L10 10.414l3.293 3.293a1 1 0 001.414-1.414L11.414 9l3.293-3.293a1 1 0 10-1.414-1.414L10 7.586 6.707 4.293z" clipRule="evenodd" />
-              </svg>
-            </button>
-          </div>
-        ) : (
-          <div className="flex flex-col items-center">
-            {/* Upload Icon and Text */}
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 010-8 5.978 5.978 0 013.25.96M21 13a4 4 0 00-3.25-3.96A5.978 5.978 0 0015 5a6 6 0 00-5.996 5.797M8 15v-2a2 2 0 012-2h4a2 2 0 012 2v2m-6-4l-2 2m8-2l2 2" />
-            </svg>
-            <p className="text-gray-500 mt-2">Upload Image</p>
+        {/* Conditionally render second upload box */}
+        {showSecondUpload && (
+          <div className="flex flex-col gap-2">
+            <label className="font-semibold">Add Another Image</label>
+            <div className="relative flex flex-col items-center justify-center border-dashed border-2 w-36 h-36 border-gray-300 p-6 rounded-md cursor-pointer text-center hover:border-gray-400">
+              {/* File Input for Second Image */}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleSecondImageChange}
+                className="hidden"
+                id="secondImageUpload"
+              />
+
+              <label htmlFor="secondImageUpload" className="cursor-pointer w-full h-full flex items-center justify-center">
+                {secondImagePreview ? (
+                  <div className="relative w-full h-full">
+                    {/* Second Image Preview */}
+                    <img
+                      src={secondImagePreview}
+                      alt="Second Image Preview"
+                      className="w-full h-full object-cover rounded-md" // Make image fit the box
+                    />
+                    {/* Cancel Button for Second Image */}
+                    <button
+                      type="button"
+                      onClick={removeSecondImage}
+                      className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M6.707 4.293a1 1 0 00-1.414 1.414L8.586 9l-3.293 3.293a1 1 0 101.414 1.414L10 10.414l3.293 3.293a1 1 0 001.414-1.414L11.414 9l3.293-3.293a1 1 0 10-1.414-1.414L10 7.586 6.707 4.293z" clipRule="evenodd" />
+                      </svg>
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center">
+                    {/* Upload Icon and Text */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 15a4 4 0 010-8 5.978 5.978 0 013.25.96M21 13a4 4 0 00-3.25-3.96A5.978 5.978 0 0015 5a6 6 0 00-5.996 5.797M8 15v-2a2 2 0 012-2h4a2 2 0 012 2v2m-6-4l-2 2m8-2l2 2" />
+                    </svg>
+                    <p className="text-gray-500 mt-2">Upload Another Image</p>
+                  </div>
+                )}
+              </label>
+            </div>
           </div>
         )}
-      </label>
-    </div>
 
-    {/* Image Format Info */}
-    <div className="text-sm text-gray-500 mt-2">
-      <p>Image format: jpg, png, jpeg, webp</p>
-      <p>Image size: Max 2 MB</p>
+        {/* Image Format Info */}
+        <div className="text-sm text-gray-500 mt-2">
+          <p>Image format: jpg, png, jpeg, webp</p>
+          <p>Image size: Max 2 MB</p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
             </div>
 
