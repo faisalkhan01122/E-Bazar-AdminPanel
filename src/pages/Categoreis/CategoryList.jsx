@@ -22,43 +22,16 @@ const CategoryList = React.memo(
           </td>
           <td>{category.name}</td>
           <td className="">{category.priority || "0"}</td>
-          {/* <td className="text-center">
-          <label className="switcher mx-auto">
-            <input
-              type="checkbox"
-              className="switcher_input"
-              checked={category.status === "active"}
-              aria-label="Category Status"
-              // onChange={() => updateStatus(category.status)}
-            />
-            <span className="switcher_control" />
-          </label>
-        </td> */}
+
           <td>
             <div className="d-flex gap-2 justify-content-center">
-              {/* <Link
-              to={`/categoryedit/${category._id}`}
-              className="btn border-green-500 text-green-500 btn-sm hover:text-white hover:bg-green-400"
-              title="View"
-              aria-label={`Edit ${category.name}`}
-            >
-              <FaEye />
-            </Link> */}
               <ActionButton
                 to={`/categoryedit/${category._id}`}
                 icon={FaEye} // Pass dynamic icon
                 className="ml-4"
                 label="View"
               />
-              {/* <button
-                type="button"
-                className="btn border-red-500 text-red-500 btn-sm hover:text-white hover:bg-red-400"
-                onClick={() => handleDelete(category._id)}
-                title="Delete"
-                aria-label={`Delete ${category.name}`}
-              >
-                <FaTrash />
-              </button> */}
+
               <ActionButton
                 onClick={() => handleDelete(category._id)}
                 icon={FaTrash} // Pass dynamic icon
@@ -72,7 +45,7 @@ const CategoryList = React.memo(
     }, [categories, handleDelete]);
 
     return (
-      <div className="card mt-4 px-2">
+      <div className="card mt-4 ">
         <div className="px-3 py-4">
           <div className="flex justify-between items-start gap-2 flex-col md:flex-row">
             <div className=" mb-3 mb-lg-0">

@@ -5,16 +5,16 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Header from "./components/new/Header";
 import Sidebar from "./components/new/Sidebar";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Footer from "./components/new/Footer/Footer";
 import { RiMenuUnfold3Fill } from "react-icons/ri";
-import { useDispatch, useSelector } from 'react-redux';
-import { checkAuth } from './utils/auth';
+import { useDispatch, useSelector } from "react-redux";
+import { checkAuth } from "./utils/auth";
 import AllRoutes from "./Routes.jsx";
-import './App.css'
+import "./App.css";
 // Create a client
 const queryClient = new QueryClient();
 
@@ -52,12 +52,12 @@ function App() {
                   ></div>
                   <Sidebar />
                 </div>
-                <main className="flex-1 lg:w-10/12 ml-4 overflow-auto">
-                  <button className="p-4 lg:hidden" onClick={toggleSidebar}>
+                <main className="flex-1  lg:w-10/12 ml-4 overflow-auto">
+                  <button className="p-4 lg:hidden " onClick={toggleSidebar}>
                     {isSidebarOpen ? (
                       "Close"
                     ) : (
-                      <RiMenuUnfold3Fill className="text-[1rem] font-semibold" />
+                      <RiMenuUnfold3Fill className="text-[1rem] h-6 w-6 mt-5 font-semibold" />
                     )}
                   </button>
                   <AllRoutes />
@@ -78,14 +78,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-

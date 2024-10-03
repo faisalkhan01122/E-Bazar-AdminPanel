@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { IoMdPerson } from "react-icons/io";
-import { FaChevronDown, FaPen } from "react-icons/fa";
+import { FaChevronDown, FaEdit, FaPen, FaTrash } from "react-icons/fa";
 
 import { MdDelete } from "react-icons/md";
 import {
@@ -14,6 +14,7 @@ import {
 } from "react-icons/fi"; // Importing icons
 import { CiImport } from "react-icons/ci";
 import { IoMdAdd } from "react-icons/io";
+import ActionButton from "../../../components/ActionButton/Action";
 
 const EmergencyContact = () => {
   const list = [
@@ -193,7 +194,8 @@ const EmergencyContact = () => {
                   </button>
                   <button
                     type="submit"
-                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="bg-primary text-white hover:bg-primary-dark inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                    style={{ color: "white" }}
                   >
                     Submit
                   </button>
@@ -211,7 +213,7 @@ const EmergencyContact = () => {
         <div className="table-responsive">
           <div className="overflow-x-auto">
             <table className="min-w-full  bg-white shadow-md rounded-lg overflow-hidden">
-              <thead className="bg-blue-50 text-blue-900">
+              <thead className="bg-secondary font-semibold">
                 <tr>
                   <th className="px-4 py-2">SL</th>
                   <th className="px-4 py-2"> Name</th>
@@ -228,7 +230,7 @@ const EmergencyContact = () => {
                     <td className="p-4" key={index}>
                       {product.id}
                     </td>
-                    <td className="px-4 py-2">
+                    <td className="px-4 font-normal py-2">
                       <h1>{product.name}</h1>
                     </td>
                     <td className="px-4 py-2 text-center text-[.9rem]">
@@ -255,7 +257,7 @@ const EmergencyContact = () => {
                     </td>
                     <td className="px-4 py-2 text-center">
                       <div className="flex justify-center gap-2">
-                        <button
+                        {/* <button
                           type="button"
                           className="btn btn-outline-primary  p-2 btn-sm text-blue-500 border-blue-500"
                         >
@@ -266,7 +268,19 @@ const EmergencyContact = () => {
                           className="btn btn-outline-danger p-2  btn-sm text-pink-500 border-pink-500"
                         >
                           <FiTrash />
-                        </button>
+                        </button> */}
+                        <ActionButton
+                          // to={`/brandupdate/${brand._id}`}
+                          icon={FaEdit} // Pass dynamic icon
+                          className="ml-4"
+                          label="View"
+                        />
+                        <ActionButton
+                          // onClick={() => handleDeleteBrand(brand._id)}
+                          icon={FaTrash} // Pass dynamic icon
+                          className="ml-4"
+                          label="Delete"
+                        />
                       </div>
                     </td>
                   </tr>

@@ -56,14 +56,14 @@ const Header = () => {
               src="/vistalogo.png"
               alt="Logo"
               width="40"
-              style={{ height: "3rem" }}
+              style={{ height: "4rem" }}
             />
           </div>
 
           {/* Right Section: Menu and Icons */}
           <div className="right flex items-center justify-around">
             {/* Language Dropdown */}
-            <div className="relative flex items-center mr-6">
+            {/* <div className="relative flex items-center mr-6">
               <img
                 src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
                 alt="US Flag"
@@ -126,7 +126,7 @@ const Header = () => {
               )}
             </div>
 
-            {/* Globe Icon */}
+        
             <div
               className="relative flex items-center mr-6 cursor-pointer"
               onMouseEnter={showGlobeTooltip}
@@ -140,7 +140,7 @@ const Header = () => {
               )}
             </div>
 
-            {/* Message Icon */}
+       
             <div
               className="relative flex items-center mr-6 cursor-pointer"
               onMouseEnter={showMessageTooltip}
@@ -154,13 +154,11 @@ const Header = () => {
               )}
             </div>
 
-            {/* Shopping Cart Icon */}
+           
             <div className="relative flex items-center mr-6 cursor-pointer">
               <FaShoppingCart size={20} />
-              {/* <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold text-white bg-red-500 rounded-full">
-                  5
-                </span> */}
-            </div>
+           
+            </div> */}
 
             {/* User Icon */}
             <div className="flex items-center cursor-pointer">

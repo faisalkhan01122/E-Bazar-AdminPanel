@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { BiHide } from "react-icons/bi";
 import { CiImport } from "react-icons/ci";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaDownload, FaEye } from "react-icons/fa";
 import { FiEdit, FiSearch, FiTrash } from "react-icons/fi";
+import ActionButton from "../../../components/ActionButton/Action";
+import ExportButton from "../../../components/ActionButton/Export";
 
 const WithdrawRequest = () => {
   const list = [
@@ -141,18 +143,19 @@ const WithdrawRequest = () => {
         />
         <h1>Withdraw Request</h1>
       </div>
-      <div className="card mt-5">
-        <div className="d-flex justify-content-between align-items-center  px-5">
-          <div className="flex gap-3">
+      <div className="card mt-5 ">
+        <div className="d-flex  justify-items-end  flex flex-col md:flex-row  align-items-center  px-5">
+          <div className="flex gap-2">
             <h1 className="text-[1rem ] font-bold">Withdraw Request Table</h1>
             <span className="badge badge-soft-dark radius-50 fz-14 ml-1">
               {products.length}
             </span>
           </div>
           <div>
-            <div className="px-3 py-4">
-              <div className="row align-items-center">
-                <div className="col-lg-12 d-flex justify-content-end gap-3 align-items-center">
+            <div className="px-3 py-4 ">
+              <div className="flex flex-col lg:flex-row lg:justify-between gap-4">
+                {/* Search Field */}
+                <div className="w-full lg:w-auto">
                   <form onSubmit={handleSearchSubmit}>
                     <div className="input-group input-group-custom input-group-merge">
                       <div className="input-group-prepend">
@@ -170,34 +173,34 @@ const WithdrawRequest = () => {
                       />
                       <button
                         type="submit"
-                        className="btn btn--primary bg-[#0177CD] text-white "
+                        className="btn  bg-primary hover:bg-primary-dark hover:text-white text-white"
+                        style={{ color: "white" }}
                       >
                         Search
                       </button>
                     </div>
                   </form>
-                  <div className="flex flex-column align-content-center">
-                    <button
-                      type="button"
-                      className="  flex gap-2 items-center justify-center border-blue-500 border text-blue-300 rounded px-3 py-2"
-                    >
-                      {" "}
-                      <CiImport />
-                      {/* <FiDownload /> Export <FiChevronDown /> */}
-                      Export
-                      <FaChevronDown />
-                    </button>
-                    <select
-                      name="/"
-                      id=""
-                      className="border px-10 py-2 rounded border-gray-300 bg-white w-full "
-                    >
-                      <option value="">All </option>
-                      <option value="">Approved </option>
-                      <option value="">Denied</option>
-                      <option value="">Pending </option>
-                    </select>
-                  </div>
+                </div>
+
+                {/* Export Button & Dropdown */}
+                <div className="flex flex-row  items-center  justify-center w-full lg:w-auto lg:flex-row lg:items-center lg:justify-end gap-3">
+                  <ExportButton
+                    data={list} // Pass the data to export
+                    filename="List" // Optional filename for the exported file
+                    icon={FaDownload} // Icon for the button
+                    label="Export " // Button label
+                    className="bg-primary text-white hover:bg-primary-dark" // Tailwind classes for styling
+                    style={{ color: "white" }} // Optional inline styles
+                  />
+                  <select
+                    name="/"
+                    className="border px-10 py-2 rounded border-gray-300 bg-white w-full sm:w-auto mt-2 sm:mt-0"
+                  >
+                    <option value="">All</option>
+                    <option value="">Approved</option>
+                    <option value="">Denied</option>
+                    <option value="">Pending</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -206,7 +209,7 @@ const WithdrawRequest = () => {
         <div className="table-responsive">
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-              <thead className="bg-blue-50 text-blue-900">
+              <thead className="bg-secondary font-semibold">
                 <tr>
                   <th className="px-4 py-2">SL</th>
                   <th className="px-4 py-2 text-center">Amount</th>
@@ -221,32 +224,35 @@ const WithdrawRequest = () => {
               <tbody>
                 {list.map((product, index) => (
                   <tr key={product.id} className=" hover:bg-gray-100">
-                    <td
-                      className=" px-3 py-4 text-center font-semibold"
-                      key={index}
-                    >
+                    <td className=" px-3 py-4 text-center " key={index}>
                       {product.id}
                     </td>
-                    <td className="px-4 py-2 text-center text-[.9rem] font-semibold">
+                    <td className="px-4 py-2 text-center text-[.9rem] ">
                       {product.price}
                     </td>{" "}
-                    <td className="px-4 py-2 text-center text-[.9rem] font-semibold">
+                    <td className="px-4 py-2 text-center text-[.9rem] ">
                       {product.name}
                     </td>
-                    <td className="px-4 py-2 text-center font-semibold">
+                    <td className="px-4 py-2 text-center ">
                       ${product.priority}
                     </td>
-                    <td className="px-4 py-2 text-center font-semibold text-green-500">
+                    <td className="px-4 py-2 text-center  text-green-500">
                       {product.img}
                     </td>
                     <td className="px-4 py-2 text-center">
                       <div className="flex justify-center gap-2">
-                        <button
+                        {/* <button
                           type="button"
                           className="btn btn-outline-primary btn-sm text-blue-500 border-blue-500"
                         >
                           <BiHide />
-                        </button>
+                        </button> */}
+                        <ActionButton
+                          // to={`/brandupdate/${brand._id}`}
+                          icon={FaEye} // Pass dynamic icon
+                          className="ml-4"
+                          label="View"
+                        />
                       </div>
                     </td>
                   </tr>

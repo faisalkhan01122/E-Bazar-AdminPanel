@@ -146,27 +146,29 @@ const DeliveryManList = () => {
         </div>
       </div>
       <div className="bg-white shadow-md rounded-md">
-        <div className="p-4 border-b border-gray-300 flex items-center justify-between">
+        <div className="p-4 border-b border-gray-300 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           <div className="flex items-center space-x-4">
             <input
               type="text"
               className="border border-gray-300 rounded-md py-2 px-4"
               placeholder="Search by name, contact info"
             />
-            <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+            <button className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark">
               Search
             </button>
           </div>
-          <div className="space-x-3 flex gap-3">
-            <button className="bg-blue-500 text-white flex gap-2 py-2 px-4 rounded-md hover:bg-blue-600">
+
+          <div className="flex flex-row items-center justify-center md:flex-row gap-3 w-full md:w-auto">
+            <button className="border-2 border-green-500  bg-white text-blue-300 items-center flex-grow flex gap-2 py-2 px-4 rounded-md hover:bg-primary-dark">
               <FaChevronDown />
               Export
             </button>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+            <button className="bg-primary text-white flex-grow py-2 px-4 rounded-md hover:bg-primary-dark">
               + Add Delivery Man
             </button>
           </div>
         </div>
+
         <div className="table-responsive">
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -256,84 +258,6 @@ const DeliveryManList = () => {
             </table>
           </div>
         </div>
-        {/* <div className="overflow-x-auto">
-          <table className="min-w-full leading-normal">
-            <thead>
-              <tr>
-                <th className="px-5 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  SL
-                </th>
-                <th className="px-5 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  Name
-                </th>
-                <th className="px-5 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  Contact Info
-                </th>
-                <th className="px-5 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  Total Orders
-                </th>
-                <th className="px-5 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  Rating
-                </th>
-                <th className="px-5 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  Status
-                </th>
-                <th className="px-5 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {deliveryMen.map((deliveryMan, index) => (
-                <tr key={deliveryMan.id}>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    {index + 1}
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm flex items-center">
-                    <img
-                      src={deliveryMan.image}
-                      alt="profile"
-                      className="w-10 h-10 rounded-full mr-4"
-                    />
-                    {deliveryMan.name}
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <div>{deliveryMan.email}</div>
-                    <div>{deliveryMan.phone}</div>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full">
-                      {deliveryMan.orders}
-                    </span>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full flex items-center">
-                      {deliveryMan.rating} <span className="ml-2">⭐</span>
-                    </span>
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <input
-                      type="checkbox"
-                      checked={deliveryMan.status}
-                      className="form-checkbox h-5 w-5 text-blue-600"
-                    />
-                  </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm space-x-2">
-                    <button className="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600">
-                      Edit
-                    </button>
-                    <button className="bg-green-500 text-white py-1 px-3 rounded-md hover:bg-green-600">
-                      View
-                    </button>
-                    <button className="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div> */}
       </div>
     </div>
   );

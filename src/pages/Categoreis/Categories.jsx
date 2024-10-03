@@ -106,16 +106,16 @@ const Categories = () => {
       category.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  if (loading)
-    return (
-      <div>
-        <LoadingSpinner />
-      </div>
-    );
-  if (error) return <div>Error: {error}</div>;
+  // if (loading)
+  //   return (
+  //     <div>
+  //       <LoadingSpinner />
+  //     </div>
+  //   );
+  // if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="container px-10 py-6">
+    <div className="px-3 md:px-5 md:mx-5 md:py-4">
       <ToastContainer />
       <div className="mb-5 mt-5">
         <h2 className="h1 mb-0 d-flex gap-3">
