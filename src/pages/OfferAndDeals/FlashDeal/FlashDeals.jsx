@@ -359,24 +359,28 @@ const FlashDeals = () => {
 
         <div className="col-md-12 my-5">
           <div className="card">
-            <div className="card-header flex flex-col md:flex-row gap-4 justify-between items-center">
-              <h4 className="card-title text-[1rem] font-semibold">
-                Flash Deals List
-              </h4>
-              <div className="flex items-center gap-4">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChange={handleSearch}
-                  className="form-control mt-2"
-                />
+            <div className="card-header flex flex-col md:flex-row gap-4 justify-between items-start">
+              <h4 className=" text-[1rem] font-semibold">Flash Deals List</h4>
+              <div className="flex flex-col md:flex-row items-end gap-4">
+                <div className="input-group input-group-merge input-group-custom">
+                  <div className="input-group-prepend"></div>
+                  <input
+                    type="search"
+                    className="form-control outline-none"
+                    placeholder="Search by Name, Email, or Phone"
+                    value={searchQuery}
+                    onChange={handleSearch}
+                  />
+                  <div className="bg-primary space-x-4 text-white  hover:bg-primary-dark input-group-text">
+                    <FaSearch /> <h1>Search</h1>
+                  </div>
+                </div>
                 <ExportButton
                   data={filteredFlashDeals} // Pass the data to export
                   filename="FlashDeal" // Optional filename for the exported file
                   icon={FaDownload} // Icon for the button
                   label="Export " // Button label
-                  className="bg-[#A1CB46] text-white hover:bg-[#7e9f37]" // Tailwind classes for styling
+                  className="bg-primary text-white hover:bg-primary-dark" // Tailwind classes for styling
                   style={{ color: "white" }} // Optional inline styles
                 />
               </div>
@@ -384,7 +388,7 @@ const FlashDeals = () => {
             <div className="card-body">
               <div className="table-responsive">
                 <table className="table">
-                  <thead>
+                  <thead className="bg-secondary">
                     <tr>
                       <th>Image</th>
                       <th>Title</th>

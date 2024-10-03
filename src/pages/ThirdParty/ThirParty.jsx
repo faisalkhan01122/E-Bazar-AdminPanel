@@ -26,8 +26,8 @@ const ThirParty = () => {
         </h2>
       </div>
       {/* Top Navbar for sections */}
-      <div className="inline-page-menu my-4">
-        <ul className="list-unstyled flex gap-3">
+      <div className="inline-page-menu m-2">
+        <ul className=" font-semibold flex gap-3">
           <li className={activeSection === "paymentmethod" ? "active" : ""}>
             <button onClick={() => handleSectionClick("paymentmethod")}>
               PayMent Method

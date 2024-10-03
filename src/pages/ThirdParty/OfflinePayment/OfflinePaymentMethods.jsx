@@ -38,7 +38,7 @@ const OfflinePaymentMethods = () => {
   };
 
   return (
-    <div className="content container-fluid snipcss-MIkKz">
+    <div className="mx-5">
       <nav>
         <div className="nav nav-tabs mb-3 border-0" role="tablist">
           <button
@@ -72,9 +72,9 @@ const OfflinePaymentMethods = () => {
           <div className="card">
             <div className="px-3 py-4">
               {/* Search and Add New Method form section */}
-              <div className="row g-2 flex-grow-1">
+              <div className="">
                 {/* Search form */}
-                <div className="col-sm-8 col-md-6 col-lg-4">
+                <div className="flex flex-col md:flex-row justify-between items-end gap-2 md:items-center">
                   <form
                     action="https://6valley.6amtech.com/admin/business-settings/offline-payment-method/index"
                     method="GET"
@@ -96,21 +96,23 @@ const OfflinePaymentMethods = () => {
                       />
                       <button
                         type="submit"
-                        className="btn px-4 py-2 bg-[#A1CB46] text-white hover:bg-[#7e9f37] input-group-text"
+                        className="btn px-4 py-2 bg-primary text-white hover:bg-primary-dark input-group-text"
+                        style={{ color: "white" }}
                       >
                         Search
                       </button>
                     </div>
                   </form>
-                </div>
-                {/* Add New Method button */}
-                <div className="col-sm-4 col-md-6 col-lg-8 d-flex justify-content-end">
-                  <p
-                    href="https://6valley.6amtech.com/admin/business-settings/offline-payment-method/add"
-                    className="btn btn-- bg-[#A1CB46] text-white hover:bg-[#7e9f37]  hover:text-white "
-                  >
-                    Add New Method
-                  </p>
+                  {/* Add New Method button */}
+                  <div className=" ">
+                    <p
+                      href="https://6valley.6amtech.com/admin/business-settings/offline-payment-method/add"
+                      className="btn btn-- bg-primary text-white hover:bg-primary-dark  hover:text-white "
+                      style={{ color: "white" }}
+                    >
+                      Add New Method
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

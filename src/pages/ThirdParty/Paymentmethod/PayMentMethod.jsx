@@ -122,7 +122,8 @@ const PayMentMethod = () => {
               <div className="text-right mb-20px">
                 <button
                   type="submit"
-                  className="btn bg-[#A1CB46] text-white hover:bg-[#7e9f37] px-5"
+                  className="btn bg-primary text-white hover:bg-primary-dark px-5"
+                  style={{ color: "white" }}
                 >
                   Save
                 </button>
@@ -251,7 +252,8 @@ const PayMentMethod = () => {
               <div className="text-right mb-20px">
                 <button
                   type="submit"
-                  className="btn bg-[#A1CB46] text-white hover:bg-[#7e9f37] px-5"
+                  className="btn bg-primary text-white hover:bg-primary-dark px-5"
+                  style={{ color: "white" }}
                 >
                   Save
                 </button>
@@ -381,7 +383,8 @@ const PayMentMethod = () => {
               <div className="text-right mb-20px">
                 <button
                   type="submit"
-                  className="btn bg-[#A1CB46] text-white hover:bg-[#7e9f37] px-5"
+                  className="btn bg-primary text-white hover:bg-primary-dark px-5"
+                  style={{ color: "white" }}
                 >
                   Save
                 </button>
@@ -511,7 +514,8 @@ const PayMentMethod = () => {
               <div className="text-right mb-20px">
                 <button
                   type="submit"
-                  className="btn bg-[#A1CB46] text-white hover:bg-[#7e9f37] px-4 py-2"
+                  className="btn bg-primary text-white hover:bg-primary-dark px-4 py-2"
+                  style={{ color: "white" }}
                 >
                   Save
                 </button>
@@ -641,7 +645,8 @@ const PayMentMethod = () => {
               <div className="text-right mb-20px">
                 <button
                   type="submit"
-                  className="btn bg-[#A1CB46] text-white hover:bg-[#7e9f37] px-5"
+                  className="btn bg-primary text-white hover:bg-primary-dark px-5"
+                  style={{ color: "white" }}
                 >
                   Save
                 </button>
@@ -770,7 +775,8 @@ const PayMentMethod = () => {
               <div className="text-right mb-20px">
                 <button
                   type="submit"
-                  className="btn bg-[#A1CB46] text-white hover:bg-[#7e9f37] px-5"
+                  className="btn bg-primary text-white hover:bg-primary-dark px-5"
+                  style={{ color: "white" }}
                 >
                   Save
                 </button>
@@ -900,7 +906,8 @@ const PayMentMethod = () => {
               <div className="text-right mb-20px">
                 <button
                   type="submit"
-                  className="btn bg-[#A1CB46] text-white hover:bg-[#7e9f37] px-5"
+                  className="btn bg-primary text-white hover:bg-primary-dark px-5"
+                  style={{ color: "white" }}
                 >
                   Save
                 </button>
