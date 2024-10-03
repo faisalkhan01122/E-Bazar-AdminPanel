@@ -54,8 +54,9 @@ const StatisticsCard = () => {
             <div>
               <button
                 type="button"
-                className="btn px-4 py-2 bg-[#A1CB46] text-white hover:bg-[#7e9f37] text-nowrap btn-block"
+                className="btn px-4 py-2 bg-primary text-white hover:bg-primary-dark text-nowrap btn-block"
                 data-toggle="dropdown"
+                style={{ color: "white" }}
               >
                 Export
               </button>

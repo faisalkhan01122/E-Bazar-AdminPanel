@@ -12,10 +12,10 @@ const MostCustomers = () => {
           Most customer
         </h4>
       </div>
-      <div className="p-4 space-y-4">
+      <div className="p-4 space-y-2">
         <a
-          href="https://6valley.6amtech.com/admin/vendors/view/1"
-          className=" basic-box-shadow flex justify-between align-items-center"
+          // href="https://6valley.6amtech.com/admin/vendors/view/1"
+          className=" basic-box-shadow  flex justify-between items-center p-2 rounded-md"
         >
           <div className="d-flex align-items-center gap-10">
             <img
@@ -34,8 +34,8 @@ const MostCustomers = () => {
           </div>
         </a>
         <a
-          href="https://6valley.6amtech.com/admin/vendors/view/2"
-          className="grid-item basic-box-shadow flex justify-between align-items-center"
+          // href="https://6valley.6amtech.com/admin/vendors/view/2"
+          className="grid-item basic-box-shadow flex justify-between p-2 rounded-md align-items-center"
         >
           <div className="d-flex align-items-center gap-10">
             <img
@@ -54,8 +54,8 @@ const MostCustomers = () => {
           </div>
         </a>
         <a
-          href="https://6valley.6amtech.com/admin/vendors/view/3"
-          className="grid-item basic-box-shadow flex justify-between align-items-center"
+          // href="https://6valley.6amtech.com/admin/vendors/view/3"
+          className="grid-item basic-box-shadow p-2 rounded-md flex justify-between align-items-center"
         >
           <div className="d-flex align-items-center gap-10">
             <img
@@ -74,8 +74,8 @@ const MostCustomers = () => {
           </div>
         </a>
         <a
-          href="https://6valley.6amtech.com/admin/vendors/view/10"
-          className="grid-item basic-box-shadow flex justify-between align-items-center"
+          // href="https://6valley.6amtech.com/admin/vendors/view/10"
+          className="grid-item basic-box-shadow p-2 rounded-md flex justify-between align-items-center"
         >
           <div className="d-flex align-items-center gap-10">
             <img
@@ -94,8 +94,8 @@ const MostCustomers = () => {
           </div>
         </a>
         <a
-          href="https://6valley.6amtech.com/admin/vendors/view/6"
-          className="grid-item basic-box-shadow flex justify-between align-items-center"
+          // href="https://6valley.6amtech.com/admin/vendors/view/6"
+          className="grid-item basic-box-shadow p-2 rounded-md flex justify-between align-items-center"
         >
           <div className="d-flex align-items-center gap-10">
             <img

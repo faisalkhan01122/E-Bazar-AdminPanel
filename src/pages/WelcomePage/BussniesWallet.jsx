@@ -32,10 +32,7 @@ const BusinessAnalytics = () => {
         id="order_stats"
       >
         <div className="col-sm-3 col-lg-2">
-          <a
-            className="business-analytics card"
-            href="https://6valley.6amtech.com/admin/orders/list/all"
-          >
+          <a className="business-analytics card">
             <h5 className="business-analytics__subtitle">Total order</h5>
             <h2 className="business-analytics__title">191</h2>
             <img
@@ -48,10 +45,7 @@ const BusinessAnalytics = () => {
           </a>
         </div>
         <div className="col-sm-3 col-lg-2">
-          <a
-            className="business-analytics get-view-by-onclick card"
-            href="https://6valley.6amtech.com/admin/vendors/list"
-          >
+          <a className="business-analytics get-view-by-onclick card">
             <h5 className="business-analytics__subtitle">Total Stores</h5>
             <h2 className="business-analytics__title">10</h2>
             <img
@@ -77,10 +71,7 @@ const BusinessAnalytics = () => {
           </a>
         </div>
         <div className="col-sm-3 col-lg-2">
-          <a
-            className="business-analytics card"
-            href="https://6valley.6amtech.com/admin/customer/list"
-          >
+          <a className="business-analytics card">
             <h5 className="business-analytics__subtitle">Total Customers</h5>
             <h2 className="business-analytics__title">11</h2>
             <img
@@ -93,10 +84,7 @@ const BusinessAnalytics = () => {
           </a>
         </div>
         <div className="col-sm-3 col-lg-2">
-          <a
-            className="order-stats order-stats_pending"
-            href="https://6valley.6amtech.com/admin/orders/list/pending"
-          >
+          <a className="order-stats order-stats_pending">
             <div className="order-stats__content">
               <img
                 src="https://6valley.6amtech.com/public/assets/back-end/img/pending.png"
@@ -109,10 +97,7 @@ const BusinessAnalytics = () => {
           </a>
         </div>
         <div className="col-sm-3 col-lg-2">
-          <a
-            className="order-stats order-stats_confirmed"
-            href="https://6valley.6amtech.com/admin/orders/list/confirmed"
-          >
+          <a className="order-stats order-stats_confirmed">
             <div className="order-stats__content">
               <img
                 src="https://6valley.6amtech.com/public/assets/back-end/img/confirmed.png"
@@ -125,10 +110,7 @@ const BusinessAnalytics = () => {
           </a>
         </div>
         <div className="col-sm-3 col-lg-2">
-          <a
-            className="order-stats order-stats_packaging"
-            href="https://6valley.6amtech.com/admin/orders/list/processing"
-          >
+          <a className="order-stats order-stats_packaging">
             <div className="order-stats__content">
               <img
                 src="https://6valley.6amtech.com/public/assets/back-end/img/packaging.png"
@@ -141,10 +123,7 @@ const BusinessAnalytics = () => {
           </a>
         </div>
         <div className="col-sm-3 col-lg-2">
-          <a
-            className="order-stats order-stats_out-for-delivery"
-            href="https://6valley.6amtech.com/admin/orders/list/out_for_delivery"
-          >
+          <a className="order-stats order-stats_out-for-delivery">
             <div className="order-stats__content">
               <img
                 src="https://6valley.6amtech.com/public/assets/back-end/img/out-of-delivery.png"

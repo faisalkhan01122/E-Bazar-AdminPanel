@@ -3,9 +3,9 @@ import "./TopCard.css";
 const TopCustomerCard = ({ avatarSrc, name, orders }) => (
   <div
     className="cursor-pointer"
-    onClick={() =>
-      (window.location.href = `/view/${name}`)
-    }
+    // onClick={() =>
+    //   (window.location.href = `/view/${name}`)
+    // }
   >
     <div className="grid-card basic-box-shadow">
       <div className="text-center">
