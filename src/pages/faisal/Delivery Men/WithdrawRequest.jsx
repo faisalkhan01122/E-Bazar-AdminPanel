@@ -141,66 +141,69 @@ const WithdrawRequest = () => {
         />
         <h1>Withdraw Request</h1>
       </div>
-      <div className="card mt-5">
-        <div className="d-flex justify-content-between align-items-center  px-5">
-          <div className="flex gap-3">
+      <div className="card mt-5 ">
+        <div className="d-flex  justify-items-end  flex flex-col md:flex-row  align-items-center  px-5">
+          <div className="flex gap-2">
             <h1 className="text-[1rem ] font-bold">Withdraw Request Table</h1>
             <span className="badge badge-soft-dark radius-50 fz-14 ml-1">
               {products.length}
             </span>
           </div>
           <div>
-            <div className="px-3 py-4">
-              <div className="row align-items-center">
-                <div className="col-lg-12 d-flex justify-content-end gap-3 align-items-center">
-                  <form onSubmit={handleSearchSubmit}>
-                    <div className="input-group input-group-custom input-group-merge">
-                      <div className="input-group-prepend">
-                        <div className="input-group-text">
-                          <FiSearch />
-                        </div>
-                      </div>
-                      <input
-                        type="search"
-                        name="searchValue"
-                        className="form-control"
-                        placeholder="Search by Product Name"
-                        value={filters.searchValue}
-                        onChange={handleInputChange}
-                      />
-                      <button
-                        type="submit"
-                        className="btn btn--primary bg-[#0177CD] text-white "
-                      >
-                        Search
-                      </button>
-                    </div>
-                  </form>
-                  <div className="flex flex-column align-content-center">
-                    <button
-                      type="button"
-                      className="  flex gap-2 items-center justify-center border-blue-500 border text-blue-300 rounded px-3 py-2"
-                    >
-                      {" "}
-                      <CiImport />
-                      {/* <FiDownload /> Export <FiChevronDown /> */}
-                      Export
-                      <FaChevronDown />
-                    </button>
-                    <select
-                      name="/"
-                      id=""
-                      className="border px-10 py-2 rounded border-gray-300 bg-white w-full "
-                    >
-                      <option value="">All </option>
-                      <option value="">Approved </option>
-                      <option value="">Denied</option>
-                      <option value="">Pending </option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
+       <div className="px-3 py-4 ">
+       <div className="flex flex-col lg:flex-row lg:justify-between gap-4">
+  {/* Search Field */}
+  <div className="w-full lg:w-auto">
+    <form onSubmit={handleSearchSubmit}>
+      <div className="input-group input-group-custom input-group-merge">
+        <div className="input-group-prepend">
+          <div className="input-group-text">
+            <FiSearch />
+          </div>
+        </div>
+        <input
+          type="search"
+          name="searchValue"
+          className="form-control"
+          placeholder="Search by Product Name"
+          value={filters.searchValue}
+          onChange={handleInputChange}
+        />
+        <button
+          type="submit"
+          className="btn  bg-primary hover:bg-primary-dark hover:text-white text-white"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+
+  {/* Export Button & Dropdown */}
+  <div className="flex flex-row  items-center  justify-center w-full lg:w-auto lg:flex-row lg:items-center lg:justify-end gap-3">
+    <button
+      type="button"
+      className="flex  gap-2 items-center justify-center border-green-500 border text-blue-300 bg-white hover:bg-primary-dark rounded px-3 py-2"
+    >
+      <CiImport />
+      Export
+      <FaChevronDown />
+    </button>
+    
+    <select
+      name="/"
+      className="border px-10 py-2 rounded border-gray-300 bg-white w-full sm:w-auto mt-2 sm:mt-0"
+    >
+      <option value="">All</option>
+      <option value="">Approved</option>
+      <option value="">Denied</option>
+      <option value="">Pending</option>
+    </select>
+  </div>
+</div>
+
+</div>
+
           </div>
         </div>
         <div className="table-responsive">

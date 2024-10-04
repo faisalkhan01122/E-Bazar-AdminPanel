@@ -146,27 +146,30 @@ const DeliveryManList = () => {
         </div>
       </div>
       <div className="bg-white shadow-md rounded-md">
-        <div className="p-4 border-b border-gray-300 flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <input
-              type="text"
-              className="border border-gray-300 rounded-md py-2 px-4"
-              placeholder="Search by name, contact info"
-            />
-            <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
-              Search
-            </button>
-          </div>
-          <div className="space-x-3 flex gap-3">
-            <button className="bg-blue-500 text-white flex gap-2 py-2 px-4 rounded-md hover:bg-blue-600">
-              <FaChevronDown />
-              Export
-            </button>
-            <button className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
-              + Add Delivery Man
-            </button>
-          </div>
-        </div>
+      <div className="p-4 border-b border-gray-300 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+  <div className="flex items-center space-x-4">
+    <input
+      type="text"
+      className="border border-gray-300 rounded-md py-2 px-4"
+      placeholder="Search by name, contact info"
+    />
+    <button className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark">
+      Search
+    </button>
+  </div>
+
+  <div className="flex flex-row items-center justify-center md:flex-row gap-3 w-full md:w-auto">
+    <button className="border-2 border-green-500  bg-white text-blue-300 items-center flex-grow flex gap-2 py-2 px-4 rounded-md hover:bg-primary-dark">
+      <FaChevronDown />
+      Export
+    </button>
+    <button className="bg-primary text-white flex-grow py-2 px-4 rounded-md hover:bg-primary-dark">
+      + Add Delivery Man
+    </button>
+  </div>
+</div>
+
+
         <div className="table-responsive">
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">

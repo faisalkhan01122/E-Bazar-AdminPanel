@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
-      <div className=" flex justify-center flex-wrap absolute bottom-0  lg:flex-row lg:justify-between items-center mx-0 md:mx-16 my-6">
+      <div className=" flex justify-center flex-wrap flex-row absolute bottom-0  lg:flex-row lg:justify-between items-center mx-0 md:mx-16 my-6">
         <div>Bazzar CMS. Copyright LHD@2024</div>
         <div className="flex justify-center gap-6">
           <div>

@@ -11,10 +11,10 @@ const AddNewDelivery = () => {
             alt=""
             className="w-7 h-7"
           />
-          <h1> Add New Delivery Man</h1>
+          <h1 className="text-[#334257]"> Add New Delivery Man</h1>
         </div>
         <div className="h-[110vh] w-full bg-white  rounded-lg mt-3 px-10 py-8">
-          <h3 className="text-lg font-bold text-gray-600 mb-2 border-b-2 border-b-gray-300 w-100 flex gap-3 align-items-center">
+          <h3 className="text-lg font-bold text-[#334257] mb-2 border-b-2 border-b-gray-300 w-100 flex gap-3 align-items-center">
             <IoMdPerson />
             General Information
           </h3>
@@ -22,7 +22,7 @@ const AddNewDelivery = () => {
             <div className="mb-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[1rem]  text-gray-700">
+                  <label className=" text-[#334257] ">
                     First Name
                   </label>
                   <input
@@ -33,7 +33,7 @@ const AddNewDelivery = () => {
                 </div>
                 <div>
                   <label className="block text-gray-700">Identity Type</label>
-                  <select className="mt-1 block w-full border px-3 py-2 border-blue-400 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  <select className="mt-1 block w-full border px-3 py-2 bg-white border-blue-400 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                     <option>Passport</option>
                     <option>National ID</option>
                     <option>Driver's License</option>
@@ -59,7 +59,7 @@ const AddNewDelivery = () => {
                 <div>
                   <label className="block text-gray-700">Phone</label>
                   <div className="flex">
-                    <select className="mt-1 block w-1/4 px-3 py-2  rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <select className="mt-1 block w-1/4 px-3 py-2 bg-white rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                       <option>UK (+44)</option>
                       <option>US (+1)</option>
                       <option>IN (+91)</option>
@@ -84,31 +84,36 @@ const AddNewDelivery = () => {
                     Deliveryman Image{" "}
                     <span className="text-sm text-gray-500">(Ratio 1:1)</span>
                   </label>
-                  <div className="flex flex-column  ">
-                    <input
-                      type="file"
-                      className="border px-3 py-2 hover:border-blue-400 bg-white rounded-md border-gray-300 shadow-sm cursor-pointer"
-                    />
-                    <img
-                      src="https://6valley.6amtech.com/public/assets/back-end/img/400x400/img2.jpg"
-                      alt=""
-                      className="h-[30vh] w-[15vw]"
-                    />
-                  </div>
+                  <div className="flex flex-col items-center justify-center sm:w-full sm:max-w-xs lg:max-w-sm">
+                 <input
+                 type="file"
+                 className="border px-3 py-2 hover:border-blue-400 bg-white rounded-md border-gray-300 shadow-sm cursor-pointer mb-4"
+                 />
+                 <img
+                 src="https://6valley.6amtech.com/public/assets/back-end/img/400x400/img2.jpg"
+                 alt=""
+                className="h-[20vh] w-[10vw] sm:w-[50vw] sm:h-[30vh] lg:w-[15vw] lg:h-[30vh] object-cover rounded-md "
+                 />
+                </div>
+
+
                 </div>
                 <div className="">
-                  <label className="block text-gray-700">Identity Image</label>
-                  <img
-                    src="https://6valley.6amtech.com/public/assets/back-end/img/400x400/img2.jpg"
-                    alt=""
-                    className="h-[30vh] w-[15vw] border rounded  border-blue-300"
-                  />
-                </div>
+                       <label className="block text-gray-700">Identity Image</label>
+                       <div className=" border-dashed border-2 border-gray-300 h-[36vh] w-[16vw] sm:w-[60vw] sm:h-[30vh] md:w-[40vw] md:h-[32vh] lg:w-[16vw] lg:h-[36vh] rounded flex items-center justify-center">
+                     <img
+                     src="https://6valley.6amtech.com/public/assets/back-end/img/400x400/img2.jpg"
+                     alt=""
+                     className="h-[20vh] w-[10vw] sm:w-full sm:h-full lg:w-[15vw] lg:h-[30vh] object-cover rounded-md"
+                      />
+                     </div>
+                        </div>
+
               </div>
             </div>
           </form>
         </div>
-        <div className="mb-4 h-[40vh] w-full bg-white  rounded-lg mt-3 px-10 py-8">
+        <div className="  mb-4 h-[40vh] w-full bg-white  rounded-lg mt-3 px-10 py-8">
           <h3 className="text-lg font-bold text-gray-600 mb-2 border-b-2 border-b-gray-300 w-100 flex gap-3 align-items-center">
             <IoMdPerson />
             Account Information
@@ -154,7 +159,7 @@ const AddNewDelivery = () => {
                 </button>
                 <button
                   type="submit"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                 >
                   Submit
                 </button>
