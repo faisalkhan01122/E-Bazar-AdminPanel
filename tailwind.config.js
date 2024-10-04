@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': '#009444', // Custom primary color (green shade)
+        'primary': '#009444',
         'primary-dark': '#7e9f37', // Darker shade of the primary color
         'secondary': '#F7FAFF', // Secondary color (another green shade)
         'alert': '#d33', // Red color for alerts or warnings

@@ -1,7 +1,23 @@
 import React from "react";
+import { useState } from "react";
 // import { TioDelete } from 'react-icons/tio';
 import "./HeaderMedia.css";
 const HeaderMedia = () => {
+  const [selectedImage, setSelectedImage] = useState(
+    "https://6valley.6amtech.com/public/assets/back-end/img/placeholder/placeholder-4-1.png"
+  );
+
+  const handleImageClick = () => {
+    document.getElementById("file-input").click(); // Trigger the file input when the image box is clicked
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setSelectedImage(imageUrl); // Update the state with the new image URL
+    }
+  };
   return (
     <div className="card snipcss-fnvUF">
       <div className="card-header">
@@ -11,7 +27,7 @@ const HeaderMedia = () => {
         <div className="card border shadow-none mb-3">
           <div className="card-body">
             <div className="row">
-              <div className="col-lg-6">
+              <div className="col-lg-6 mb-3">
                 <div className="form-group">
                   <label className="title-color">Title</label>
                   <input
@@ -23,7 +39,7 @@ const HeaderMedia = () => {
                   />
                 </div>
               </div>
-              <div className="col-lg-6">
+              <div className="col-lg-6 mb-3">
                 <div className="form-group">
                   <label className="title-color text-capitalize">
                     Sub title
@@ -32,7 +48,7 @@ const HeaderMedia = () => {
                     type="text"
                     name="sub_title"
                     className="form-control"
-                    defaultValue="Create your own store.Already have store?"
+                    defaultValue="Create your own store. Already have a store?"
                     placeholder="Enter sub title"
                   />
                 </div>
@@ -42,7 +58,9 @@ const HeaderMedia = () => {
         </div>
         <div className="card border shadow-none">
           <div className="card-body">
-            <div className="mx-auto max-w-400">
+            <div className="mx-auto max-w-[400px]">
+              {" "}
+              {/* Adjusted max width */}
               <div className="mb-3 text-center">
                 <label
                   htmlFor="name"
@@ -51,44 +69,48 @@ const HeaderMedia = () => {
                   Image
                 </label>
                 <span className="badge badge-soft-info">
-                  (Size : 310px x 240px)
+                  (Size: 310px x 240px)
                 </span>
               </div>
               <div className="custom_upload_input">
-                <input
-                  type="file"
-                  name="image"
-                  className="image-input meta-img"
-                  data-image-id="view-header-logo"
-                  accept="image/*"
-                />
-                <span className="delete_file_input btn btn-outline-danger btn-sm square-btn d--none">
-                  {/* <TioDelete /> */}
-                </span>
-                <div className="img_area_with_preview position-absolute z-index-2">
-                  <img
-                    id="view-header-logo"
-                    src="https://6valley.6amtech.com/public/assets/back-end/img/placeholder/placeholder-4-1.png"
-                    className="bg-white"
-                    alt=""
+                <div className="img_area_with_preview relative flex items-center justify-center">
+                  <div
+                    className="border-dashed border-2 border-gray-400 p-2 w-full h-40 cursor-pointer" // Increased height here (h-40 = 10rem) and adjusted width
+                    onClick={handleImageClick} // Call the handler on click
+                  >
+                    {selectedImage ? ( // Show selected image or placeholder
+                      <img
+                        id="view-header-logo"
+                        src={selectedImage}
+                        className="bg-white w-full h-full object-cover" // Use h-full to fill the container and object-cover to maintain aspect ratio
+                        alt="Selected"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center h-full">
+                        <img
+                          alt=""
+                          className="w-75 mb-2"
+                          src="https://6valley.6amtech.com/public/assets/back-end/img/icons/product-upload-icon.svg"
+                        />
+                        <h3 className="text-muted text-capitalize">
+                          Upload image
+                        </h3>
+                      </div>
+                    )}
+                  </div>
+                  <input
+                    id="file-input"
+                    type="file"
+                    accept="image/*"
+                    className="hidden" // Hide the file input
+                    onChange={handleFileChange} // Call this function when the file is selected
                   />
                 </div>
-                <div className="position-absolute h-100 top-0 w-100 d-flex align-content-center justify-content-center">
-                  <div className="d-flex flex-column justify-content-center align-items-center">
-                    <img
-                      alt=""
-                      className="w-75"
-                      src="https://6valley.6amtech.com/public/assets/back-end/img/icons/product-upload-icon.svg"
-                    />
-                    <h3 className="text-muted text-capitalize">Upload image</h3>
-                  </div>
-                </div>
+                <p className="text-muted text-center mt-2">
+                  Image format: Jpg, png, jpeg, webp, <br /> Image size: Max 2
+                  MB
+                </p>
               </div>
-              <p className="text-muted text-center mt-2">
-                {" "}
-                Image format : Jpg, png, jpeg, webp, <br /> Image size : Max 2
-                MB
-              </p>
             </div>
           </div>
         </div>
@@ -98,7 +120,8 @@ const HeaderMedia = () => {
           </button>
           <button
             type="submit"
-            className="btn px-4 py-2 bg-[#A1CB46] text-white hover:bg-[#7e9f37]"
+            className="btn px-4 py-2 bg-primary text-white hover:bg-primary-dark"
+            style={{ color: "white" }}
           >
             Submit
           </button>

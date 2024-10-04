@@ -185,12 +185,12 @@ const WithdrawRequest = () => {
                 {/* Export Button & Dropdown */}
                 <div className="flex flex-row  items-center  justify-center w-full lg:w-auto lg:flex-row lg:items-center lg:justify-end gap-3">
                   <ExportButton
-                    data={list} // Pass the data to export
-                    filename="List" // Optional filename for the exported file
-                    icon={FaDownload} // Icon for the button
-                    label="Export " // Button label
-                    className="bg-primary text-white hover:bg-primary-dark" // Tailwind classes for styling
-                    style={{ color: "white" }} // Optional inline styles
+                    data={list}
+                    filename="List"
+                    icon={FaDownload}
+                    label="Export "
+                    className="bg-primary text-white hover:bg-primary-dark"
+                    style={{ color: "white" }}
                   />
                   <select
                     name="/"
